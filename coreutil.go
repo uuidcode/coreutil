@@ -2,6 +2,7 @@ package coreutil
 
 import (
 	"github.com/satori/go.uuid"
+	"strings"
 )
 
 func CheckErr(err error) {
@@ -13,7 +14,9 @@ func CheckErr(err error) {
 func CreateUuid() string {
 	value, err := uuid.NewV4()
 	CheckErr(err)
-	return value.String()
+	uuid := value.String()
+	uuid = strings.Replace(uuid, "-", "", -1)
+	return uuid
 }
 
 func DeleteItemByIndex(slice []string, index int) []string {

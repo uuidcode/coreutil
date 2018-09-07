@@ -3,6 +3,7 @@ package coreutil
 import (
 	"encoding/json"
 	"github.com/satori/go.uuid"
+	"strconv"
 	"strings"
 )
 
@@ -28,4 +29,8 @@ func ToJson(object interface{}) string {
 	CheckErr(err)
 
 	return string(bytes)
+}
+
+func ParseInt(value string) (i int64, err error) {
+	return strconv.ParseInt(value, 10, 64)
 }
